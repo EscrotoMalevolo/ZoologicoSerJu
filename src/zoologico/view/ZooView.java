@@ -6,6 +6,7 @@ package zoologico.view;
 
 import zoologico.view.servicios.FrameAlimentarAnimal;
 import zoologico.view.servicios.FrameCrearJaulas;
+import zoologico.view.servicios.FrameSubirCargarDb;
 import zoologico.view.servicios.FrameVerJaulas;
 
 /**
@@ -32,8 +33,8 @@ public class ZooView extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         botonVerJaulas = new javax.swing.JButton();
-        botonAlimentar = new javax.swing.JButton();
         botonCrearJaulas = new javax.swing.JButton();
+        botonDb = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(242, 24, 242));
         setMaximizable(true);
@@ -61,21 +62,19 @@ public class ZooView extends javax.swing.JInternalFrame {
             }
         });
 
-        botonAlimentar.setBackground(new java.awt.Color(0, 255, 255));
-        botonAlimentar.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
-        botonAlimentar.setText("Alimentar Animales");
-        botonAlimentar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAlimentarActionPerformed(evt);
-            }
-        });
-
         botonCrearJaulas.setBackground(new java.awt.Color(0, 255, 255));
         botonCrearJaulas.setFont(new java.awt.Font("Comic Sans MS", 3, 14)); // NOI18N
         botonCrearJaulas.setText("Crear Jaulas");
         botonCrearJaulas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCrearJaulasActionPerformed(evt);
+            }
+        });
+
+        botonDb.setText("Base de Datos...");
+        botonDb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDbActionPerformed(evt);
             }
         });
 
@@ -86,18 +85,17 @@ public class ZooView extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(botonVerJaulas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(botonAlimentar)
-                .addGap(51, 51, 51))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonCrearJaulas)
+                .addGap(65, 65, 65))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(botonCrearJaulas)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(190, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonDb)
+                .addGap(118, 118, 118))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,12 +103,12 @@ public class ZooView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonVerJaulas)
-                    .addComponent(botonAlimentar))
-                .addGap(18, 18, 18)
-                .addComponent(botonCrearJaulas)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonCrearJaulas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(botonVerJaulas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addComponent(botonDb)
+                .addContainerGap())
         );
 
         pack();
@@ -132,16 +130,16 @@ public class ZooView extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_botonCrearJaulasActionPerformed
 
-    private void botonAlimentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAlimentarActionPerformed
-        FrameAlimentarAnimal alimentarAnimal = new FrameAlimentarAnimal();   
-        alimentarAnimal.setVisible(true);
+    private void botonDbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDbActionPerformed
+        FrameSubirCargarDb sbDb = new FrameSubirCargarDb();
+        sbDb.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_botonAlimentarActionPerformed
+    }//GEN-LAST:event_botonDbActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAlimentar;
     private javax.swing.JButton botonCrearJaulas;
+    private javax.swing.JButton botonDb;
     private javax.swing.JButton botonVerJaulas;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

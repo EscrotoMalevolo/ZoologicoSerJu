@@ -36,6 +36,11 @@ public class Jaulas {
     public List<Animales> getTamJaula() {
         return tamJaula;
     }
+
+    @Override
+    public String toString() {
+        return "Jaulas{" + "nombreJaula=" + nombreJaula + ", ambienteJaula=" + ambienteJaula + ", numJaula=" + numJaula + ", tamJaula=" + tamJaula + '}';
+    }
     
-    public void enajular(){}
+    
 }

@@ -5,11 +5,19 @@ package zoologico.controller.clasesAnimales;
  */
 public class Voladores extends Animales{
     
-    private String fechaEclosion;
+    private String tipoEclosion;
 
-    public Voladores(String name, String clasificacion, String especie, String tipoAlimentacion, String habitat, String fechaEclosion) {
+    public Voladores(String name, String clasificacion, String especie, String tipoAlimentacion, String habitat) {
         super(name, clasificacion, especie, tipoAlimentacion, habitat);
-        this.fechaEclosion = fechaEclosion;
+        this.tipoEclosion = "Eclosion normal saliendo de un huevo";
+    }
+
+    public void setFechaEclosion(String tipoEclosion) {
+        this.tipoEclosion = tipoEclosion;
+    }
+
+    public String getFechaEclosion() {
+        return tipoEclosion;
     }
 
     @Override

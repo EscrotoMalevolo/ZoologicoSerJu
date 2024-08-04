@@ -41,8 +41,8 @@
                       <Component id="botonCrearAnimal" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
-              <Component id="botonEnjaularAnimal" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <Component id="botonAlimentarAnimales" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -54,7 +54,7 @@
               <Component id="Texto1PanelAnimalitos" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botonEnjaularAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonAlimentarAnimales" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonCrearAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="191" max="32767" attributes="0"/>
@@ -85,7 +85,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCrearAnimalActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="botonEnjaularAnimal">
+    <Component class="javax.swing.JButton" name="botonAlimentarAnimales">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="0" type="rgb"/>
@@ -93,10 +93,10 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Comic Sans MS" size="12" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Enjaular Animal"/>
+        <Property name="text" type="java.lang.String" value="Alimentar Animales"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEnjaularAnimalActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAlimentarAnimalesActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

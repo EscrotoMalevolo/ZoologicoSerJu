@@ -1,18 +1,100 @@
 package zoologico.view.servicios;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import zoologico.controller.Jaulas;
+import zoologico.controller.Zoologico;
+import zoologico.controller.clasesAnimales.Animales;
+import zoologico.model.Db;
+import zoologico.view.ZooView;
+
 /**
  *
  * @author juan_
  */
 public class FrameCrearJaulas extends javax.swing.JFrame {
+    String nombreJaula, habitatJaula;
+    Integer codigoJaula;
+    List<Animales> animaleSeleccionados = new ArrayList<>();
+    
 
     /**
      * Creates new form CrearJaulas
      */
     public FrameCrearJaulas() {
         initComponents();
-    }
+        DefaultTableModel tablitaAnimales = (DefaultTableModel) tablaParaAnimalesAJaulas.getModel();
+        tablitaAnimales.setRowCount(0); // Limpiar la tabla antes de agregar nuevas filas
 
+        for (Animales animal : Zoologico.getAnimales()) {
+            tablitaAnimales.addRow(new Object[]{animal.getEspecie(), animal.getName(), animal.getClasificacion(), animal.getHabitat()});
+        }
+        tablaParaAnimalesAJaulas.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+        // Agregar MouseListener para la selección/deselección con un clic
+        tablaParaAnimalesAJaulas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = tablaParaAnimalesAJaulas.rowAtPoint(e.getPoint());
+                if (row != -1) {
+                    if (tablaParaAnimalesAJaulas.isRowSelected(row)) {
+                        tablaParaAnimalesAJaulas.removeRowSelectionInterval(row, row);
+                    } else {
+                        tablaParaAnimalesAJaulas.addRowSelectionInterval(row, row);
+                    }
+                }
+            }
+        });
+
+        // Personalizar el renderer para cambiar el color de las filas seleccionadas
+        tablaParaAnimalesAJaulas.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (isSelected) {
+                    cellComponent.setBackground(Color.LIGHT_GRAY);
+                } else {
+                    cellComponent.setBackground(Color.WHITE);
+                }
+                return cellComponent;
+            }
+        });
+
+        // Obtener y guardar los animales seleccionados
+        tablaParaAnimalesAJaulas.getSelectionModel().addListSelectionListener(event -> {
+            if (!event.getValueIsAdjusting()) {
+                animaleSeleccionados.clear();
+                int[] selectedRows = tablaParaAnimalesAJaulas.getSelectedRows();
+                for (int rowIndex : selectedRows) {
+                    String especie = (String) tablitaAnimales.getValueAt(rowIndex, 0);
+                    String name = (String) tablitaAnimales.getValueAt(rowIndex, 1);
+                    String clasificacion = (String) tablitaAnimales.getValueAt(rowIndex, 2);
+                    String habitat = (String) tablitaAnimales.getValueAt(rowIndex, 3);
+
+                    // Buscar el objeto animal original en tu colección de animales usando estos valores
+                    for (Animales animal : Zoologico.getAnimales()) {
+                        if (animal.getEspecie().equals(especie) && animal.getName().equals(name) && 
+                            animal.getClasificacion().equals(clasificacion) && animal.getHabitat().equals(habitat)) {
+                            animaleSeleccionados.add(animal);
+                            break;  // Salir del loop interno una vez que el animal es encontrado
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -22,15 +104,21 @@ public class FrameCrearJaulas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        texto0CrearJaula = new javax.swing.JLabel();
         varNombreJaula = new javax.swing.JTextField();
         varHabitatJaula = new javax.swing.JTextField();
         texto1NombreJaula = new javax.swing.JLabel();
         texto2HabitatJaula = new javax.swing.JLabel();
+        botonCrear = new javax.swing.JButton();
+        contenedorJaula = new javax.swing.JScrollPane();
+        tablaParaAnimalesAJaulas = new javax.swing.JTable();
+        botonVolver = new javax.swing.JButton();
+        texto3CodigoJaula = new javax.swing.JLabel();
+        varCodigoJaula = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Crear Jaula: ");
+        texto0CrearJaula.setText("Crear Jaula: ");
 
         varNombreJaula.setText("Nombre de la Jaula");
         varNombreJaula.addActionListener(new java.awt.event.ActionListener() {
@@ -50,61 +138,162 @@ public class FrameCrearJaulas extends javax.swing.JFrame {
 
         texto2HabitatJaula.setText("Habitat de la Jaula:");
 
+        botonCrear.setText("Crear");
+        botonCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearActionPerformed(evt);
+            }
+        });
+
+        tablaParaAnimalesAJaulas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Especie", "Nombre", "Clasificación", "Habitat"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        contenedorJaula.setViewportView(tablaParaAnimalesAJaulas);
+
+        botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
+
+        texto3CodigoJaula.setText("Codigo de la Jaula:");
+
+        varCodigoJaula.setText("0");
+        varCodigoJaula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varCodigoJaulaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 52, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(texto2HabitatJaula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(varHabitatJaula, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(botonCrear)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonVolver)
+                                .addGap(21, 21, 21))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(texto1NombreJaula, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(texto1NombreJaula, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(texto2HabitatJaula, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(varHabitatJaula, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(varNombreJaula, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(29, 29, 29)
+                                                .addComponent(texto3CodigoJaula, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(texto0CrearJaula))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(varNombreJaula, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(96, 96, 96))))
+                                .addComponent(varCodigoJaula, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 102, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(contenedorJaula, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(texto0CrearJaula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(varNombreJaula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(texto1NombreJaula))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(texto1NombreJaula)
+                    .addComponent(texto3CodigoJaula)
+                    .addComponent(varCodigoJaula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(varHabitatJaula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(texto2HabitatJaula))
-                .addContainerGap(222, Short.MAX_VALUE))
+                    .addComponent(texto2HabitatJaula)
+                    .addComponent(varHabitatJaula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(contenedorJaula, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonCrear)
+                    .addComponent(botonVolver))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void varNombreJaulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varNombreJaulaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_varNombreJaulaActionPerformed
 
     private void varHabitatJaulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varHabitatJaulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_varHabitatJaulaActionPerformed
 
+    private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
+        String nombreJaula = varNombreJaula.getText();
+        String habitatJaula = varHabitatJaula.getText();
+        int codigoJaula = Integer.parseInt(varCodigoJaula.getText());
+
+        // Llamar al método para crear una jaula
+        Zoologico.CrearJaula(nombreJaula, habitatJaula, codigoJaula, new ArrayList<>(animaleSeleccionados));
+        
+        
+
+        // Limpiar los campos de texto
+        varNombreJaula.setText("");
+        varHabitatJaula.setText("");
+        varCodigoJaula.setText("");
+
+        // Limpiar la lista de animales seleccionados
+        animaleSeleccionados.clear();
+        // Limpiar la selección en la tabla
+        tablaParaAnimalesAJaulas.clearSelection();
+    }//GEN-LAST:event_botonCrearActionPerformed
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        ZooView zooView = new ZooView();
+        zooView.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_botonVolverActionPerformed
+
+    private void varCodigoJaulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varCodigoJaulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_varCodigoJaulaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton botonCrear;
+    private javax.swing.JButton botonVolver;
+    private javax.swing.JScrollPane contenedorJaula;
+    private javax.swing.JTable tablaParaAnimalesAJaulas;
+    private javax.swing.JLabel texto0CrearJaula;
     private javax.swing.JLabel texto1NombreJaula;
     private javax.swing.JLabel texto2HabitatJaula;
+    private javax.swing.JLabel texto3CodigoJaula;
+    private javax.swing.JTextField varCodigoJaula;
     private javax.swing.JTextField varHabitatJaula;
     private javax.swing.JTextField varNombreJaula;
     // End of variables declaration//GEN-END:variables
+
 }

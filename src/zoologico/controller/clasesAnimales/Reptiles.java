@@ -6,11 +6,19 @@ package zoologico.controller.clasesAnimales;
  */
 public class Reptiles extends Animales{
     
-    private String fechaEclosion; 
+    private String tipoEclosion; 
 
-    public Reptiles(String name, String clasificacion, String especie, String tipoAlimentacion, String habitat, String fechaEclosion) {
+    public Reptiles(String name, String clasificacion, String especie, String tipoAlimentacion, String habitat) {
         super(name, clasificacion, especie, tipoAlimentacion, habitat);
-        this.fechaEclosion = fechaEclosion;
+        this.tipoEclosion = "Eclosión normal por nacimiento de un huevo";
+    }
+
+    public String getFechaEclosion() {
+        return tipoEclosion;
+    }
+
+    public void setFechaEclosion(String fechaEclosion) {
+        this.tipoEclosion = fechaEclosion;
     }
 
     @Override

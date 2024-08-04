@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="botones">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -24,46 +28,53 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="varHabitat" min="-2" pref="71" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="botonVarHabitat" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="varTipoAlimen" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="botonVarAlimentacion" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="botonCrearAnimal" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="texto1CrearAnimal" min="-2" pref="186" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="varHabitat" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="texto5Habitat" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
+                              <Component id="botonCrearAnimal" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="texto1CrearAnimal" min="-2" pref="186" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="varEspecie" min="-2" pref="71" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="botonVarEspecie" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="texto3Especie" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="varNombre" min="-2" pref="71" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="botonVarNombre" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="texto2Nombre" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="varTipoAlimen" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="texto4Alimentacion" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="radioAereos" min="-2" pref="98" max="-2" attributes="0"/>
-                              <Component id="radioReptiles" min="-2" pref="98" max="-2" attributes="0"/>
-                              <Component id="radioMamiferos" min="-2" pref="98" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="radioAereos" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="radioMamiferos" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="radioReptiles" min="-2" pref="98" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="botonVolver" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="92" max="32767" attributes="0"/>
+              <EmptySpace pref="58" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -71,35 +82,35 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="texto1CrearAnimal" min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="texto1CrearAnimal" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="varNombre" alignment="0" max="32767" attributes="0"/>
+                  <Component id="texto2Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="radioMamiferos" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="radioReptiles" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="varNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonVarNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="radioAereos" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="varEspecie" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonVarEspecie" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="texto3Especie" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="radioReptiles" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="varTipoAlimen" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonVarAlimentacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="texto4Alimentacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="radioAereos" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="varHabitat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonVarHabitat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="texto5Habitat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="botonCrearAnimal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="99" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+              <Component id="botonVolver" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -107,7 +118,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="texto1CrearAnimal">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xbf;Qu&#xe9; tipo de animal desea crear?"/>
+        <Property name="text" type="java.lang.String" value="Creaci&#xf3;n de Animal:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioMamiferos">
@@ -160,38 +171,6 @@
         <Property name="text" type="java.lang.String" value="Habitat"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="botonVarNombre">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="*"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonVarNombreActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonVarEspecie">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="*"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonVarEspecieActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonVarAlimentacion">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="*"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonVarAlimentacionActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonVarHabitat">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="*"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonVarHabitatActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="botonCrearAnimal">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear Animal"/>
@@ -199,6 +178,34 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCrearAnimalActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonVolver">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Volver"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonVolverActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="texto2Nombre">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=": Nombre"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="texto3Especie">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=": Especie"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="texto4Alimentacion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=": Tipo de Alimentacion"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="texto5Habitat">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=": Habitat"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

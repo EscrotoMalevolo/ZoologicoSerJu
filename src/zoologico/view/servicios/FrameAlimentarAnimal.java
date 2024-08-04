@@ -1,8 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package zoologico.view.servicios;
+
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+import zoologico.controller.Jaulas;
+import zoologico.controller.Zoologico;
+import zoologico.controller.clasesAnimales.Animales;
+import zoologico.view.AnimalesView;
 
 /**
  *
@@ -15,7 +18,14 @@ public class FrameAlimentarAnimal extends javax.swing.JFrame {
      */
     public FrameAlimentarAnimal() {
         initComponents();
+        DefaultListModel<String> modelJaulas=new DefaultListModel<>();
+        listaJaulas.setModel(modelJaulas); 
+        for(Jaulas jaula: Zoologico.getJaulas()){
+            modelJaulas.addElement(jaula.getNombreJaula());
+        }
     }
+    
+    private Integer indiceArray;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,22 +36,152 @@ public class FrameAlimentarAnimal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        texto1AlimentarAnimal = new javax.swing.JLabel();
+        texto2AlimentarAnimal = new javax.swing.JLabel();
+        ScrollPaneAlimentar = new javax.swing.JScrollPane();
+        listaJaulas = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaAlimentar = new javax.swing.JTable();
+        botonVolver = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textoComer = new javax.swing.JTextArea();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        texto1AlimentarAnimal.setText("¡Alimentar Animal!");
+
+        texto2AlimentarAnimal.setText("¿En que Jaula está su animal?");
+
+        listaJaulas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaJaulasMouseClicked(evt);
+            }
+        });
+        ScrollPaneAlimentar.setViewportView(listaJaulas);
+
+        tablaAlimentar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Especie", "Nombre", "Clasificacion", "Habitat"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaAlimentar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaAlimentarMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaAlimentar);
+
+        botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
+
+        textoComer.setColumns(20);
+        textoComer.setRows(5);
+        jScrollPane2.setViewportView(textoComer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(texto2AlimentarAnimal)
+                    .addComponent(texto1AlimentarAnimal))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonVolver)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(ScrollPaneAlimentar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(41, 41, 41))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(texto1AlimentarAnimal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(texto2AlimentarAnimal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ScrollPaneAlimentar, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(botonVolver)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void listaJaulasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaJaulasMouseClicked
+        // Obtener el índice de la jaula seleccionada
+        int indiceLista = listaJaulas.getSelectedIndex();
+        indiceArray= indiceLista;
+
+
+        // Limpiar la tabla de animales
+        DefaultTableModel tablitaAnimals = (DefaultTableModel) tablaAlimentar.getModel();
+        tablitaAnimals.setRowCount(0); // Limpiar la tabla antes de agregar nuevas filas
+
+        // Agregar los datos de los animales de la jaula seleccionada a la tabla
+        for (Animales animal : Zoologico.getJaulas().get(indiceLista).getTamJaula()) {
+            tablitaAnimals.addRow(new Object[]{
+                animal.getEspecie(), 
+                animal.getName(), 
+                animal.getClasificacion(), 
+                animal.getHabitat()
+            });
+        }
+    }//GEN-LAST:event_listaJaulasMouseClicked
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        AnimalesView animalView = new AnimalesView();
+        animalView.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonVolverActionPerformed
+
+    private void tablaAlimentarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAlimentarMouseClicked
+        textoComer.setText("");
+        int indiceTabla= tablaAlimentar.getSelectedRow();
+        textoComer.setText("El animal " + Zoologico.getJaulas().get(indiceArray).getTamJaula().get(indiceTabla).getName() + " Que es un " + Zoologico.getJaulas().get(indiceArray).getTamJaula().get(indiceTabla).getEspecie()+", Esta comiendo de la siguiente forma: "
+                + Zoologico.getJaulas().get(indiceArray).getTamJaula().get(indiceTabla).getTipoAlimentacion());
+    }//GEN-LAST:event_tablaAlimentarMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollPaneAlimentar;
+    private javax.swing.JButton botonVolver;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> listaJaulas;
+    private javax.swing.JTable tablaAlimentar;
+    private javax.swing.JLabel texto1AlimentarAnimal;
+    private javax.swing.JLabel texto2AlimentarAnimal;
+    private javax.swing.JTextArea textoComer;
     // End of variables declaration//GEN-END:variables
 }

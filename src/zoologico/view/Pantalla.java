@@ -13,6 +13,7 @@ public class Pantalla extends javax.swing.JFrame {
     public Pantalla() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,7 +27,6 @@ public class Pantalla extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         texto1Bienvenida = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         menuBar1Epiko = new javax.swing.JMenuBar();
         Menu1Animales = new javax.swing.JMenu();
         CheckBoxMenuItem1Animales = new javax.swing.JCheckBoxMenuItem();
@@ -47,28 +47,20 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel1.setText("En la sección superior izquierda encontrarás el acceso a las funcionalidades de nuestro zoo");
         jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/images.jpg"))); // NOI18N
-
         escritorio.setLayer(texto1Bienvenida, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 836, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
             .addGroup(escritorioLayout.createSequentialGroup()
-                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(escritorioLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(texto1Bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(escritorioLayout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(jLabel2)))
+                .addGap(61, 61, 61)
+                .addComponent(texto1Bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         escritorioLayout.setVerticalGroup(
@@ -78,9 +70,7 @@ public class Pantalla extends javax.swing.JFrame {
                 .addComponent(texto1Bienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(105, 105, 105)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143))
+                .addGap(494, 494, 494))
         );
 
         Menu1Animales.setText("Seleccionar");
@@ -91,7 +81,7 @@ public class Pantalla extends javax.swing.JFrame {
         });
 
         CheckBoxMenuItem1Animales.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
-        CheckBoxMenuItem1Animales.setSelected(true);
+        CheckBoxMenuItem1Animales.setSelected(false);
         CheckBoxMenuItem1Animales.setText("Animales");
         CheckBoxMenuItem1Animales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +91,7 @@ public class Pantalla extends javax.swing.JFrame {
         Menu1Animales.add(CheckBoxMenuItem1Animales);
 
         CheckBoxMenuItem2Zoo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
-        CheckBoxMenuItem2Zoo.setSelected(true);
+        CheckBoxMenuItem2Zoo.setSelected(false);
         CheckBoxMenuItem2Zoo.setText("Zoologico");
         CheckBoxMenuItem2Zoo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +108,10 @@ public class Pantalla extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(escritorio)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +184,6 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JMenu Menu1Animales;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar menuBar1Epiko;
     private javax.swing.JLabel texto1Bienvenida;
     // End of variables declaration//GEN-END:variables

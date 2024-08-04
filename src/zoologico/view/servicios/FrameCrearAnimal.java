@@ -1,5 +1,6 @@
 package zoologico.view.servicios;
 import zoologico.controller.Zoologico;
+import zoologico.view.AnimalesView;
 /**
  *
  * @author juan_
@@ -13,6 +14,10 @@ public class FrameCrearAnimal extends javax.swing.JFrame {
      */
     public FrameCrearAnimal() {
         initComponents();
+        botones = new javax.swing.ButtonGroup();
+        botones.add(radioMamiferos);
+        botones.add(radioReptiles);
+        botones.add(radioAereos);
     }
 
     /**
@@ -24,6 +29,7 @@ public class FrameCrearAnimal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botones = new javax.swing.ButtonGroup();
         texto1CrearAnimal = new javax.swing.JLabel();
         radioMamiferos = new javax.swing.JRadioButton();
         radioReptiles = new javax.swing.JRadioButton();
@@ -32,15 +38,16 @@ public class FrameCrearAnimal extends javax.swing.JFrame {
         varEspecie = new javax.swing.JTextField();
         varTipoAlimen = new javax.swing.JTextField();
         varHabitat = new javax.swing.JTextField();
-        botonVarNombre = new javax.swing.JButton();
-        botonVarEspecie = new javax.swing.JButton();
-        botonVarAlimentacion = new javax.swing.JButton();
-        botonVarHabitat = new javax.swing.JButton();
         botonCrearAnimal = new javax.swing.JButton();
+        botonVolver = new javax.swing.JButton();
+        texto2Nombre = new javax.swing.JLabel();
+        texto3Especie = new javax.swing.JLabel();
+        texto4Alimentacion = new javax.swing.JLabel();
+        texto5Habitat = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        texto1CrearAnimal.setText("¿Qué tipo de animal desea crear?");
+        texto1CrearAnimal.setText("Creación de Animal:");
 
         radioMamiferos.setText("Mamiferos");
         radioMamiferos.addActionListener(new java.awt.event.ActionListener() {
@@ -81,34 +88,6 @@ public class FrameCrearAnimal extends javax.swing.JFrame {
 
         varHabitat.setText("Habitat");
 
-        botonVarNombre.setText("*");
-        botonVarNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVarNombreActionPerformed(evt);
-            }
-        });
-
-        botonVarEspecie.setText("*");
-        botonVarEspecie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVarEspecieActionPerformed(evt);
-            }
-        });
-
-        botonVarAlimentacion.setText("*");
-        botonVarAlimentacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVarAlimentacionActionPerformed(evt);
-            }
-        });
-
-        botonVarHabitat.setText("*");
-        botonVarHabitat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVarHabitatActionPerformed(evt);
-            }
-        });
-
         botonCrearAnimal.setText("Crear Animal");
         botonCrearAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,76 +95,102 @@ public class FrameCrearAnimal extends javax.swing.JFrame {
             }
         });
 
+        botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
+
+        texto2Nombre.setText(": Nombre");
+
+        texto3Especie.setText(": Especie");
+
+        texto4Alimentacion.setText(": Tipo de Alimentacion");
+
+        texto5Habitat.setText(": Habitat");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(varHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonVarHabitat))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(varTipoAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonVarAlimentacion))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(botonCrearAnimal)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(texto1CrearAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(varHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(texto5Habitat))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(295, 295, 295)
+                                .addComponent(botonCrearAnimal))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(texto1CrearAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(varEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(botonVarEspecie))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(texto3Especie))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(varNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(botonVarNombre))))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(radioAereos, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(radioReptiles, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(radioMamiferos, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(92, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(texto2Nombre))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(varTipoAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(texto4Alimentacion)))
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioAereos, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(radioMamiferos, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(radioReptiles, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(botonVolver)))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(texto1CrearAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texto1CrearAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(varNombre)
+                    .addComponent(texto2Nombre)
                     .addComponent(radioMamiferos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioReptiles)
-                    .addComponent(varNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonVarNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioAereos)
                     .addComponent(varEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonVarEspecie))
+                    .addComponent(texto3Especie)
+                    .addComponent(radioReptiles))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(varTipoAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonVarAlimentacion))
+                    .addComponent(texto4Alimentacion)
+                    .addComponent(radioAereos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(varHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonVarHabitat))
-                .addGap(28, 28, 28)
+                    .addComponent(texto5Habitat))
+                .addGap(36, 36, 36)
                 .addComponent(botonCrearAnimal)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(botonVolver)
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioReptilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioReptilesActionPerformed
+        if (animalVoladores!=null) {
+            animalVoladores= null;
+        }else if(animalMamifero!= null){
+            animalMamifero= null;
+        }
         animalReptiles= "Reptil";
     }//GEN-LAST:event_radioReptilesActionPerformed
 
@@ -198,45 +203,57 @@ public class FrameCrearAnimal extends javax.swing.JFrame {
     }//GEN-LAST:event_varTipoAlimenActionPerformed
 
     private void radioAereosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAereosActionPerformed
-        animalVoladores= "Volador";        // TODO add your handling code here:
+
+        if (animalReptiles!=null) {
+            animalReptiles= null;
+        }else if(animalMamifero!= null){
+            animalMamifero= null;
+        }
+        animalVoladores= "Volador";
     }//GEN-LAST:event_radioAereosActionPerformed
 
-    private void botonVarEspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVarEspecieActionPerformed
-        especieAnimal= varEspecie.getText(); 
-    }//GEN-LAST:event_botonVarEspecieActionPerformed
-
-    private void botonVarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVarNombreActionPerformed
-        nombreAnimal= varNombre.getText();        // TODO add your handling code here:
-    }//GEN-LAST:event_botonVarNombreActionPerformed
-
-    private void botonVarAlimentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVarAlimentacionActionPerformed
-        alimentacionAnimal= varTipoAlimen.getText();
-    }//GEN-LAST:event_botonVarAlimentacionActionPerformed
-
-    private void botonVarHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVarHabitatActionPerformed
-        habitatAnimal= varHabitat.getText();        // TODO add your handling code here:
-    }//GEN-LAST:event_botonVarHabitatActionPerformed
-
     private void radioMamiferosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMamiferosActionPerformed
+        
+        if (animalReptiles!=null) {
+            animalReptiles= null;
+        }else if(animalVoladores!= null){
+            animalVoladores= null;
+        }
         animalMamifero= "Mamifero";
     }//GEN-LAST:event_radioMamiferosActionPerformed
 
     private void botonCrearAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearAnimalActionPerformed
-        if(animalMamifero!=null){Zoologico.CrearAnimalMamifero(nombreAnimal, especieAnimal, alimentacionAnimal, habitatAnimal, "koala");
-        }else if(animalReptiles!=null){Zoologico.CrearAnimalReptil(nombreAnimal, especieAnimal, alimentacionAnimal, habitatAnimal, "koala");
-        }else if(animalVoladores!=null){Zoologico.CrearAnimalVolador(nombreAnimal, especieAnimal, alimentacionAnimal, habitatAnimal, "koala");}
+        especieAnimal= varEspecie.getText(); 
+        nombreAnimal= varNombre.getText();
+        alimentacionAnimal= varTipoAlimen.getText();
+        habitatAnimal= varHabitat.getText(); 
+        if(animalMamifero!=null){Zoologico.CrearAnimalMamifero(nombreAnimal, especieAnimal, alimentacionAnimal, habitatAnimal);
+        }else if(animalReptiles!=null){Zoologico.CrearAnimalReptil(nombreAnimal, especieAnimal, alimentacionAnimal, habitatAnimal);
+        }else if(animalVoladores!=null){Zoologico.CrearAnimalVolador(nombreAnimal, especieAnimal, alimentacionAnimal, habitatAnimal);}
+        varEspecie.setText("");
+        varNombre.setText("");
+        varTipoAlimen.setText("");
+        varHabitat.setText("");
     }//GEN-LAST:event_botonCrearAnimalActionPerformed
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        AnimalesView animalView = new AnimalesView();
+        animalView.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonVolverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCrearAnimal;
-    private javax.swing.JButton botonVarAlimentacion;
-    private javax.swing.JButton botonVarEspecie;
-    private javax.swing.JButton botonVarHabitat;
-    private javax.swing.JButton botonVarNombre;
+    private javax.swing.JButton botonVolver;
+    private javax.swing.ButtonGroup botones;
     private javax.swing.JRadioButton radioAereos;
     private javax.swing.JRadioButton radioMamiferos;
     private javax.swing.JRadioButton radioReptiles;
     private javax.swing.JLabel texto1CrearAnimal;
+    private javax.swing.JLabel texto2Nombre;
+    private javax.swing.JLabel texto3Especie;
+    private javax.swing.JLabel texto4Alimentacion;
+    private javax.swing.JLabel texto5Habitat;
     private javax.swing.JTextField varEspecie;
     private javax.swing.JTextField varHabitat;
     private javax.swing.JTextField varNombre;

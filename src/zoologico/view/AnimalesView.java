@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package zoologico.view;
 
+import zoologico.view.servicios.FrameAlimentarAnimal;
 import zoologico.view.servicios.FrameCrearAnimal;
-import zoologico.view.servicios.FrameEnjaularAnimal;
+
+
 
 /**
  *
@@ -31,7 +29,7 @@ public class AnimalesView extends javax.swing.JInternalFrame {
 
         Texto1PanelAnimalitos = new javax.swing.JLabel();
         botonCrearAnimal = new javax.swing.JButton();
-        botonEnjaularAnimal = new javax.swing.JButton();
+        botonAlimentarAnimales = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(100, 8, 50));
         setBorder(new javax.swing.border.MatteBorder(null));
@@ -51,12 +49,12 @@ public class AnimalesView extends javax.swing.JInternalFrame {
             }
         });
 
-        botonEnjaularAnimal.setBackground(new java.awt.Color(0, 255, 255));
-        botonEnjaularAnimal.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
-        botonEnjaularAnimal.setText("Enjaular Animal");
-        botonEnjaularAnimal.addActionListener(new java.awt.event.ActionListener() {
+        botonAlimentarAnimales.setBackground(new java.awt.Color(0, 255, 255));
+        botonAlimentarAnimales.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
+        botonAlimentarAnimales.setText("Alimentar Animales");
+        botonAlimentarAnimales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEnjaularAnimalActionPerformed(evt);
+                botonAlimentarAnimalesActionPerformed(evt);
             }
         });
 
@@ -71,8 +69,8 @@ public class AnimalesView extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(botonCrearAnimal)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(botonEnjaularAnimal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(botonAlimentarAnimales)
                 .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
@@ -82,7 +80,7 @@ public class AnimalesView extends javax.swing.JInternalFrame {
                 .addComponent(Texto1PanelAnimalitos)
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonEnjaularAnimal)
+                    .addComponent(botonAlimentarAnimales)
                     .addComponent(botonCrearAnimal))
                 .addContainerGap(191, Short.MAX_VALUE))
         );
@@ -96,18 +94,18 @@ public class AnimalesView extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_botonCrearAnimalActionPerformed
 
-    private void botonEnjaularAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnjaularAnimalActionPerformed
-        FrameEnjaularAnimal frameJaula = new FrameEnjaularAnimal();
-        frameJaula.setVisible(true);
+    private void botonAlimentarAnimalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAlimentarAnimalesActionPerformed
+        FrameAlimentarAnimal frameAlimentar= new FrameAlimentarAnimal();
+        frameAlimentar.setVisible(true);
         this.dispose();
-        
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonEnjaularAnimalActionPerformed
+    }//GEN-LAST:event_botonAlimentarAnimalesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Texto1PanelAnimalitos;
+    private javax.swing.JButton botonAlimentarAnimales;
     private javax.swing.JButton botonCrearAnimal;
-    private javax.swing.JButton botonEnjaularAnimal;
     // End of variables declaration//GEN-END:variables
 }
